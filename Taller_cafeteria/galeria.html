@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+var current = 0;
+var imagenes = new Array();
+ 
+$(document).ready(function() {
+    var numImages = 6;
+    if (numImages <= 3) {
+        $('.right-arrow').css('display', 'none');
+        $('.left-arrow').css('display', 'none');
+    }
+ 
+    $('.left-arrow').on('click',function() {
+        if (current > 0) {
+            current = current - 1;
+        } else {
+            current = numImages - 3;
+        }
+ 
+        $(".carrusel").animate({"left": -($('#product_'+current).position().left)}, 600);
+ 
+        return false;
+    });
+ 
+    $('.left-arrow').on('hover', function() {
+        $(this).css('opacity','0.5');
+    }, function() {
+        $(this).css('opacity','1');
+    });
+ 
+    $('.right-arrow').on('hover', function() {
+        $(this).css('opacity','0.5');
+    }, function() {
+        $(this).css('opacity','1');
+    });
+ 
+    $('.right-arrow').on('click', function() {
+        if (numImages > current + 3) {
+            current = current+1;
+        } else {
+            current = 0;
+        }
+ 
+        $(".carrusel").animate({"left": -($('#product_'+current).position().left)}, 600);
+ 
+        return false;
+    }); 
+ });
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no , initial-scale=1.0, minimun-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>Bienvenidos a la Cafeteria UIDE</title>
+  </head>
+  <header>
+    <div class="contenedor">
+      <nav class="menu">
+        <a href="acerca.html" id="btn-acerca-de">Acerca de</a>
+
+        <a href="galeria.html" id="galeria">Galeria</a>
+        <a href="ubicacion.html" id="ubicacion">Ubicacion</a>
+      </nav>
+      <div class="texto">
+        <h1 class = "nombre"> Cafeteria <spam> UIDE </spam></h1>
+        <h3>GALERIA</h3>
+      </div>
+    </div>
+  </header>
+  <body>
+   
+<div id="carrusel">
+    <a href="#" class="left-arrow"><img src="images/left-arrow.png" /></a>
+    <a href="#" class="right-arrow"><img src="images/right-arrow.png" /></a>
+    <div class="carrusel">
+        <div class="product" id="product_0">
+            <img src="imagenes/comer_cucarachas.jpeg" width="195" height="100" />
+            <h5>Lorem ipsum 1</h5>
+            <p>165.00 €</p>
+        </div>
+        <div class="product" id="product_1">
+            <img src="imagenes/hqdefault.jpeg" width="195" height="100" />
+            <h5>Lorem ipsum 2</h5>
+            <p>100.00 €</p>
+        </div>
+        <div class="product" id="product_2">
+            <img src="imagenes/images.jpeg" width="195" height="100" />
+            <h5>Lorem ipsum 3</h5>
+            <p>250.00 €</p>
+        </div>
+        
+        </div>
+    </div>
+</div>
+  </body>
+</html>
